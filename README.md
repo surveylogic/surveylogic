@@ -1,4 +1,4 @@
-# ImaginAIry 🤖🧠
+# Viziax 🤖🧠
 
 AI imagined images. Pythonic generation of stable diffusion images **and videos** *!.
 
@@ -8,7 +8,7 @@ AI imagined images. Pythonic generation of stable diffusion images **and videos*
 ```bash
 # on macOS, make sure rust is installed first
 # be sure to use Python 3.10, Python 3.11 is not supported at the moment
->> pip install imaginairy
+>> pip install viziax
 >> imagine "a scenic landscape" "a photo of a dog" "photo of a fruit bowl" "portrait photo of a freckled woman" "a bluejay"
 # Make an AI video
 >> aimg videogen --start-image rocket.png
@@ -104,9 +104,9 @@ Options:
 - 🎉 SDXL (Stable Diffusion Extra Large) models are now supported.
   - try `--model opendalle` or `--model sdxl`
   - inpainting and controlnets are not yet supported for SDXL
-- 🎉 imaginairy is now backed by the [refiners library](https://github.com/finegrain-ai/refiners)
+- 🎉 viziax is now backed by the [refiners library](https://github.com/finegrain-ai/refiners)
   - This was a huge rewrite which is why some features are not yet supported.  On the plus side, refiners supports
-cutting edge features (SDXL, image prompts, etc) which will be added to imaginairy soon.
+cutting edge features (SDXL, image prompts, etc) which will be added to viziax soon.
   - [self-attention guidance](https://github.com/SusungHong/Self-Attention-Guidance) which makes details of images more accurate
 - 🎉 feature: larger image generations now work MUCH better and stay faithful to the same image as it looks at a smaller size. 
 For example `--size 720p --seed 1` and `--size 1080p --seed 1` will produce the same image for SD15
@@ -243,7 +243,7 @@ aimg colorize pearl-girl.jpg --caption "photo of a woman"
 
 ###  Instruction based image edits [by InstructPix2Pix](https://github.com/timothybrooks/instruct-pix2pix)
 #### (Broken as of 14.0.0)
-Just tell imaginairy how to edit the image and it will do it for you!
+Just tell viziax how to edit the image and it will do it for you!
 <p float="left">
 <img src="docs/assets/scenic_landscape_winter.jpg" height="256">
 <img src="docs/assets/dog_red.jpg" height="256">
@@ -261,7 +261,7 @@ Just tell imaginairy how to edit the image and it will do it for you!
 Use prompt strength to control how strong the edit is. For extra control you can combine with prompt-based masking.
 
 ```bash
-# enter imaginairy shell
+# enter viziax shell
 >> aimg
 🤖🧠> edit scenic_landscape.jpg -p "make it winter" --prompt-strength 20
 🤖🧠> edit dog.jpg -p "make the dog red" --prompt-strength 5
@@ -358,7 +358,7 @@ Upscale images easily.
 
 === "Python"
     ```py
-    from imaginairy.api.upscale import upscale
+    from viziax.api.upscale import upscale
 
     img = upscale(img="assets/000206_856637805_PLMS40_PS7.5_colorful_smoke.jpg")
     img.save("colorful_smoke.upscaled.jpg")
@@ -372,7 +372,7 @@ You can view different integrated models by running `aimg upscale --list-models`
 Also accepts url's if you want to upscale an image with a different model. Control the new file format/location with --format.
 
 ```python
-from imaginairy.enhancers.upscale_realesrgan import upscale_image
+from viziax.enhancers.upscale_realesrgan import upscale_image
 from PIL import Image
 img = Image.open("my-image.jpg")
 big_img = upscale_image(i)
@@ -466,7 +466,7 @@ You can use `{}` to randomly pull values from lists.  A list of values separated
 <summary>Python example</summary>
 
 ```python
-from imaginairy.enhancers.prompt_expansion import expand_prompts
+from viziax.enhancers.prompt_expansion import expand_prompts
 
 my_prompt = "a giant {_animal_}"
 
@@ -517,7 +517,7 @@ a bowl full of gold bars sitting on a table
 For full command line instructions run `aimg --help`
 
 ```python
-from imaginairy import imagine, imagine_image_files, ImaginePrompt, WeightedPrompt, LazyLoadingImage
+from viziax import imagine, imagine_image_files, ImaginePrompt, WeightedPrompt, LazyLoadingImage
 
 url = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Thomas_Cole_-_Architect%E2%80%99s_Dream_-_Google_Art_Project.jpg/540px-Thomas_Cole_-_Architect%E2%80%99s_Dream_-_Google_Art_Project.jpg"
 prompts = [
@@ -561,9 +561,9 @@ They can be installed via: `curl --proto '=https' --tlsv1.2 -sSf https://sh.rust
 ## Running in Docker
 See example Dockerfile (works on machine where you can pass the gpu into the container)
 ```bash
-docker build . -t imaginairy
+docker build . -t viziax
 # you really want to map the cache or you end up wasting a lot of time and space redownloading the model weights
-docker run -it --gpus all -v $HOME/.cache/huggingface:/root/.cache/huggingface -v $HOME/.cache/torch:/root/.cache/torch -v `pwd`/outputs:/outputs imaginairy /bin/bash
+docker run -it --gpus all -v $HOME/.cache/huggingface:/root/.cache/huggingface -v $HOME/.cache/torch:/root/.cache/torch -v `pwd`/outputs:/outputs viziax /bin/bash
 ```
 
 ## Running on Google Colab
@@ -578,7 +578,7 @@ A: Set the `HUGGINGFACE_HUB_CACHE` environment variable.
 #### Q: How do I free up disk space?
 
 A: The AI models are cached in `~/.cache/` (or `HUGGINGFACE_HUB_CACHE`). To delete the cache remove the following folders:
- - ~/.cache/imaginairy
+ - ~/.cache/viziax
  - ~/.cache/clip
  - ~/.cache/torch
  - ~/.cache/huggingface
