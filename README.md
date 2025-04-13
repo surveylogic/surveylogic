@@ -1,11 +1,5 @@
 # ImaginAIry 🤖🧠
 
-[![Downloads](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1rOvQNs0Cmn_yU1bKWjCOHzGVDgZkaTtO?usp=sharing)
-[![Downloads](https://pepy.tech/badge/imaginairy)](https://pepy.tech/project/imaginairy)
-[![image](https://img.shields.io/pypi/v/imaginairy.svg)](https://pypi.org/project/imaginairy/)
-[![image](https://img.shields.io/badge/license-MIT-green)](https://github.com/brycedrennan/imaginAIry/blob/master/LICENSE/)
-[![Discord](https://flat.badgen.net/discord/members/FdD7ut3YjW)](https://discord.gg/FdD7ut3YjW)
-
 AI imagined images. Pythonic generation of stable diffusion images **and videos** *!.
 
 "just works" on Linux and macOS(M1) (and sometimes windows).
@@ -96,7 +90,6 @@ Options:
 
 
 **14.0.4**
-- docs: add a documentation website at https://brycedrennan.github.io/imaginAIry/
 - build: remove fairscale dependency
 - fix: video generation was broken
 
@@ -353,8 +346,6 @@ When writing strength modifiers keep in mind that pixel values are between 0 and
 ```bash
 >> imagine "a couple smiling" --steps 40 --seed 1 --fix-faces
 ```
-<img src="https://github.com/brycedrennan/imaginAIry/raw/master/assets/000178_1_PLMS40_PS7.5_a_couple_smiling_nofix.png" height="256"> ➡️ 
-<img src="https://github.com/brycedrennan/imaginAIry/raw/master/assets/000178_1_PLMS40_PS7.5_a_couple_smiling_fixed.png" height="256"> 
 
 
 ## Image Upscaling
